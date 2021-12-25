@@ -1,0 +1,92 @@
+-Einführung Main.class: Besitzt Funktionalitäten um zu einem Server eine Verbindung aufzubauen, läuft als Konsole
+-Einführung UserInput.class: Nimmt Nutzereingaben entgegen
+-UserInput.class: Einführen des Befehls "connect <Server-Adresse> <Nutzername>": Verbindet zum angegebenen Server und übermittelt den eingegebenen Namen
+-UserInput.class: Einführen der Möglichkeit, Chatnachrichten zu senden; Alles, was nicht als Befehl bekannt ist, wird als Chatnachricht interpretiert
+-UserInput.class: Einführen des Befehls "/pn <Nutzername> <Nachricht>": Sendet eine private Nachricht an den angegebenen Spieler
+-Einführung "Window.class extends JFrame": Zuständig für die Benutzeroberfläche; Enthält das Hauptfenster
+-Window.class: Ein erstes, statisches Layout wird festgelegt; Die Größe des Fensters ist unveränderlich
+-Window.class: Einführen der Oberleiste: Links steht der Spieler, der aktuell dran ist, in der Mitte die aktuelle/letzte Aktion, rechts der Kontostand
+-Window.class: Der Bereich für die Hauptdarstellungen(Spielfeld, Handelsfenster, etc.) wird festgelegt
+-Window.class: Der untere linke Bereich wird halbiert; Links sollen später die Anteilsscheine stehen, rechts das Aktionsfeld mit den Knöpfen (Hinweis von Nico)
+-Window.class: Rechts oben wird der Bereich für die Liste der verbunden Nutzer festgelegt
+-Window.class: Rechts unten wird der Bereich für die Nachrichtenliste festgelegt
+-Window.class: Unter der Nachrichtenliste wird ein Textfeld platziert, dass Nutzereingaben bearbeiten soll(Hauptsächlich Chat)
+-Einführung MessageList.class: Darstellung der Nachrichten; Unterstützt verschiedene Arten von Nachrichten mit entsprechenden Farben; Ist scrollbar
+-Einführung MWLogon.class: Das Hauptfenster, das zum Login dient; Beinhaltet Textfelder und Beschriftungen für den Nutzernamen, die Server-Adresse und den Server-Port
+-MWLogon.class: Einführung von Methoden zu Rückgabe der eingegebenen Daten
+-MWLogon.class: Einführung einer Methode, die die eingegebenen Namen überprüft und im Fehlerfall entsprechende Nachrichten ausgibt: Namen dürfen keine Sonderzeichen enthalten; Der Port muss ein Integer-Wert sein
+-Einführung ActionField.class: Beinhaltet Knopf-Strukturen, die auf der Oberfläche angezeigt werden können (Hinweis von Nico)
+-ActionField.class: Einführung der Login-Struktur: Verbinden, Beenden 
+-Main.class: Beinhaltet nun einen "ActionListener.class", um auf Nutzereingaben in der Oberfläche zu reagieren
+-Main.class: Man kann nun mit Hilfe der Oberfläche eine Verbindung zu einem Server aufbauen
+-Main.class: Einführung von Event-Basiertem rendern: Bei jeder eingehenden Nachricht vom Server oder Nutzereingabe in der Oberfläche wird die Oberfläche neu gezeichnet; Im Zusammenhang mit der Texteingabe werden häufig Abstürze festgestellt (Hinweis von Nico)
+-Einführung MWGame.class: Soll später das Spielfeld enthalten, erstmal jedoch nur ein simpler Schriftzug
+-ActionField.class: Einführung der Lobby-Struktur: Mitspieler, Zuschauer, Ausloggen, Beenden
+-Main.class: Der Spieler kann nun mit Hilfe der Knöpfe festlegen, ob er zuschauen oder mitspielen möchte (Hinweis von Nico)
+-Einführung UserList.class: Eine Darstellung der verbundenen Nutzer; Nummeriert sie automatisch durch
+-MWGame.class: Stellt nun das Spielfeld entsprechend skaliert dar; Kleine Schriften sind schlecht lesbar
+-Abschaffen der UserInput.class: Da nun ein funktionierendes GUI existiert, ist sie nicht mehr nötig
+-Window.class: Der Server kann nun auf die Oberleiste zugreifen
+-Actionfield.class: Einführung der Zuschauer-Struktur: Ausloggen, Beenden (Hinweis von Timo)
+-Actionfield.class: Einführung der Spieler-Struktur: Würfeln, Weiter, Anteile, Auktion, Bank, Aufgeben, Ausloggen, Beenden (Hinweis von Timo)
+-Actionfield.class: Der Server kann die Knöpfe der Spielerstruktur nun aktivieren/deaktivieren
+-Einführung MWTrade.class: Ein Hauptfenster, in dem man Anteilsscheine, repräsentiert durch Knöpfe, dem Einkaufwagen hinzufügen/entfernen, und den Handel abschließen/abbrechen kann
+-Einführung PropertyWindow.class: Eine Darstellung der im Besitz befindlichen Anteilsscheine
+-Einführung MWAuction.class: Ein Hauptfenster, in welchem man einen seiner Anteilsscheine zur Auktion stellen kann
+-Einführung MWOffer.class: Ein Hauptfenster, in welchem man bei einer Auktion mitbieten/aussteigen kann
+-Einführung WindowRenderer.class: Zeichnet das gesamte Fenster permanent neu; Das Event-basierte Rendern wird entfernt; Nun sind häufig Abstürze im Zusammenhang mit allen Textfeldern zu beobachten
+-Einführung RenderObject.class: Eine Klasse, um die alle Teilkomponenten der Anzeige erweitert werden
+-WindowRenderer.class: Beinhaltet nun eine Liste von "RenderObject.class", welche permanent neu gezeichnet werden; Das Neuzeichnen der gesamten Oberfläche entfällt
+-RenderObject.class: Kann nun angeben, ob es neugezeichnet werden muss
+-WindowRenderer.class: Zeichnet "RenderObject.class" nur noch neu, wenn es nötig ist; Alle Klassen werden dementsprechend bearbeitet(Bei welchem Event ist ein Neuzeichnen erforderlich?)
+-RenderObject.class: Einführen der Rendertiefe: Man kann nun einstellen, wie oft das Objekt neu gezeichnet werden soll(Manche Objekte neigen dazu, beim ersten Zeichnen noch Grafikfehler aufzuweisen)
+-RenderObject.class: Man kann nun permanentes Neuzeichnen anfordern; Wichtig für Animationen auf dem Spielfeld
+-WindowRenderer.class: Das Risiko für den Bug, dass das Programm im Zusammenhang mit Textfeldern abstürzt, ist nun minimal (Hinweis von Timo)
+-Main.class: Einführen der Methode "reArrange()": Richtet alle Komponenten entsprechend der Fenstergröße neu an
+-WindowRenderer.class: Überprüft nun permanent die Fenstergröße und führt bei Bedarf die Methode "reArrange()" aus (Hinweis von Timo)
+-Main.class: Die Fenstergröße ist nicht mehr unveränderlich
+-Einführung PlayerData.class: Beinhaltet eine Anzeige für den Kontostand und die Joker; Befindet sich zwischen "PropertyWindow.class" und "ActionField.class"
+-Window.class: Die Oberleiste wird abgeschafft; Der Server sendet nun alle Spielmeldungen als Nachricht an "MessageList.class"
+-Message.class: Die verschiedenen Arten von Nachrichten werden entfernt; Die Farbe der Nachricht wird jetzt beim Erstellen mit übergeben (Hinweis von Timo)
+-Einführung MessageListener.class: Reagiert auf das Hinzufügen von Nachrichten in "MessageList.class", indem er bis zum Ende scrollt(klappt nicht immer)
+-Einführung MainWindow.class: Eine Klasse, um die alle Hauptfenster erweitert werden; Wird um "RenderObject.class" erweitert, um auf einfache Weise alle Hauptfenster in "WindowRenderer.class" einzubinden
+-UserList.class: Bei jedem Nutzer wird jetzt vom Server auch die ID übermittelt und entsprechend angezeigt; Das Nummerieren entfällt (Hinweis von Timo)
+-Erstellen von "RessourcePositions.txt": Beinhaltet die Koordinaten alle Felder auf dem Spielbrett (Hinweis von Timo)
+-Einführung Reader.class: Liest eine Textdatei ein und kann sie zeilenweise ausgeben; Ignoriert Zeilen mit vorangstelltem ";", um die Möglichkeit von Kommentaren einzubauen
+-Window.class: Liest nun die Positionen der Felder ein
+-MWGame.class: Kann nun vom Server übermittelt bekommen, auf welchem Feld welcher Rohstoff liegt und diesen entsprechend platzieren
+-Einführung AnimationRenderer.class: Zuständig für Animationen, also die Würfel und Spielfiguren (Hinweis von Nico)
+-AnimationRenderer.class: Kann nun vom Server übermittelt bekommen, welche Würfel angezeigt werden sollen
+-UserList.class: Kann nun vom Server übermittelt bekommen, welche Farbe der Schriftzug eines Nutzers haben soll (Hinweis von Timo)
+-AnimationRenderer.class: Kann nun Spielfiguren darstellen, inklusive Schrittanimation beim Vorrücken; Farbe wird vom Server übermittelt(entsprechend der Farben in "UserList.class"); Spielfiguren auf einem Feld werden nach rechts aufgreiht; Größe fest
+-AnimationRenderer.class: Das Würfeln ist nun animiert (Hinweis von Timo)
+-Main.class: Einführung von Sounds(Würfeln, Button-Clicks, Spielfigurschritte)  (Hinweis von Timo)
+-PlayerData.class: Besitzt nun ein Kontrollhäkchen um den Sound zu (de-)aktivieren (Hinweis von Timo)
+-Main.class: Einführung von URL's zum Einlesene von Dateien, damit es auch im Jar-Archiv funktioniert (Hinweis von Timo)
+-Window.class: Der Nutzername wird nun in der Titelzeile angezeigt (Hinweis von Timo)
+-Einführung ViewerWindow.class: Zeigt den Zuschauern Daten über die Mitspieler an(Anteilsscheine, Kontostand) (Hinweis von Nico)
+-UserList.class: Nutzer können nun in Form eines Icons markiert werden(Der Spieler, der aktuell dran ist) (Hinweis von Nico)
+-Einführung InterfaceListener.class: Fungiert als ActionListener für die Nutzeroberfläche (Hinweis von Timo)
+-Einführung ServerListener.class: Nimmt die Nachrichten vom Server entgegen und bearbeitet diese (Hinweis von Timo)
+-Main.class: Die entsprechenden Programmteile werden in diese Klassen ausgelagert  (Hinweis von Timo)
+-ActionField.class: Der Knopf Zuschauer wird durch einen Knopf mit Bereit/Nicht Bereit(wird vom Server eingestellt) ersetzt; Der Mitspieler Knopf wechselt nun zwischen Mitspieler/Zuschauer(wird ebenfalls vom Server eingestellt) (Hinweis von Timo)
+-Main.class: Verbessern der Vebindungsstruktur: Korrektes ausloggen; Zuvor konnte man nicht neu Verbinden, nachdem die Verbindung unterbrochen wurde (Hinweis von Timo)
+-MessageList.class: Kann nun selbstständig Zeilenumbrüche durchführen; Trennt Wörter nur, wenn sie länger als eine ganze Zeile sind (Hinweis von Timo)
+-MWGame.class: Skaliert das Spielbrett nun entsprechend des Hauptfenster-Bereichs (Hinweis von Timo)
+-MWGame.class: Auswählen eines anderen Skalier-Algorithmus bringt eine bessere Optik(Lesbarkeit) (Hinweis von Nico)
+-AnimationRenderer.class: Die Spielfiguren werden nun in der Größe skaliert; Sie werden nun in Reihen zu je 3 Figuren untereinandergelegt (Hinweis von Nico)
+-AnimationRenderer.class: Die Würfel werden nun skaliert (Hinweis von Timo)
+-Window.class: Einführung der Methoden "clearAll()" und "clearGame()": Säubern die Oberfläche nach Ende des Spiels oder nach dem Ausloggen (Hinweis von Timo)
+-MWAuction.class und MWOffer.class: Verbesserung der Anordnung und Darstellung  (Hinweis von Timo)
+-PropertyWindow.class: Anteile lassen sich nun farbig markieren, um sie hervorzuheben(Bei Auktionen) (Hinweis von Nico)
+-PropertyWindow.class: Die Anteile werden nun alphabetisch sortiert (Hinweis von Nico)
+-PropertyWindow.class: Anteile mit 0% werden nun automatisch entfernt (Hinweis von Timo)
+
+-UserList.class: Die Markierung eines Spielers befindet sich nun hinter dem Namen(zuvor davor) (Hinweis von Timo)
+-Main.class: Neues, ID-basiertes Modell für die Sounds; Der Server kann nun Sounds im Client abspielen 
+-UserList.class: Hinter einem Nutzer kann nun ein Prozentwert angezeigt werden(Zeigt während einer Auktion an, wie viel Prozent eines Rohstoffs jemand besitzt) (Hinweis von Nico)
+-InterfaceListener.class: Wenn der Nutzer versucht, eine private Nachricht zu senden, obwohl er gar nicht verbunden ist, wird dies verhindert und eine Meldung ausgegeben (Hinweis von Timo)
+-Main.class: Verschiedene Sounds hinzugefügt (Hinweis von Nico)
+-UserList.class: Neues Icon zum Markieren von Spielern (Hinweis von Timo)
+-Window.class: Der Server kann nun das Fenster auffordern, den Fokus zu erfragen(als Hinweis, wenn man dran ist)
+-Window.class: Das Fenster erfragt nun den Fokus, wenn die verbindung beendet wird

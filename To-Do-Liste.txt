@@ -1,0 +1,12 @@
+-Telex-Script-System?
+-Tauschgeschäft?
+-Namen mit Sonderzeichen?
+-Server-Konsole: Spielebefehle?
+
+-Eingabefeld: Pfeil hoch für zuvor Gesendetes
+-Sound: Message
+-Autoscroll nochmal überarbeiten
+-Inaktivität: Auktion
+-Server: Showplayers
+-Verlieren?
+-Fokus bei Nachricht

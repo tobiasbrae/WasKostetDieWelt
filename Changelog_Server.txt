@@ -1,0 +1,130 @@
+-Grundlegendes Servermodell
+	-Server.class: Beinhaltet den Serversocket und nimmt ankommende Verbindungen entgegen
+	-UserInput.class: Zuständig für Eingaben in der Server-Konsole
+	-ConnectionList.class: Eine Liste der Verbindungen zu den Clients
+	-Connection.class: Verbindung zum Client, beinhaltet den Socket und einen Usernamen, bearbeitet eingehende Nachrichten des Cients
+
+-ConnectionList.class: Hinzufügen der Möglichkeit, eine Nachricht an alle Verbindungen zu senden (public void broadcast(String Message))
+-Connection.class: Hinzufügen der Möglichkeit, Chatnachrichten zu senden, welche an alle weiteren Clients weitergeleitet werden
+-Connection.class: Hinzufügen der Möglichkeit, private Nachrichten an andere Clients zu schicken; Berücksichtigt, ob ein Client mit dem angegebenen Namen verbunden ist
+-Server.class: Ausgabe der Uhrzeit bei jeder Nachricht in der Konsole
+-Server.class: Der Server überprüft nun bei eingehender Verbindung, ob der übermittelte Name schon vergeben ist und reagiert entsprechend(wenn der Name vorhanden ist, wird die Verbindung abgewiesen)
+-UserInput.class: Hinzufügen der Möglichkeit, den Server per Befehl zu beenden(sendet vorher an alle Clients eine entsprechende Nachricht)
+-UserInput.class: Hinzufügen der Möglichkeit, eine Nachricht an alle Clients zu senden
+-UserInput.class: Hinzufügen der Möglichkeit, alle verbundenen Clients aufzulisten
+-ConnectionList.class: Hinzufügen der Möglichkeit, einem Client alle verbundenen Clients zu übermitteln
+
+-Einführung Game.class: Verwaltet das Spiel und beinhaltet eine Liste der Mitspieler
+-Einführung Gamer.class: Klasse für den Spieler, beinhaltet die Verbindung des zugehörigen Clients, den Kontostand, etc.
+-Gamer.class: Hinzufügen der Möglichkeit, zu würfeln
+-Connection.class: Hinzufügen der Möglichkeit, Zuschauer oder Mitspieler zu sein
+-ConnectionList.class: Hinzufügen der Möglichkeit, die Clients, die Mitspieler sind, zu zählen
+-UserInput.class: Hinzufügen der Möglichkeit, das Spiel manuell zu starten, insofern genug Mitspieler(2) verbunden sind
+-Game.class: Hinzufügen der Möglichkeit, durch Würfeln zu bestimmen, wer anfängt; Man würfelt nur mit dem roten Würfel; Berücksichtigung der Möglichkeit, dass mehrere Spieler die gleiche Augenzahl würfeln
+-Game.class: Hinzufügen der Möglichkeit, den aktuellen Spieler zu bestimmen
+-Einführung Fields.class: Eine Liste von Feldern, die das Spielbrett repräsentiert
+-Erstellen von TypeIDs.txt: Beinhaltet den zugehörigen Typ zur jeweiligen ID(z.B. Joker, Telex, Auswahl Land, etc.)
+-Einführung Field.class: Repräsentiert ein Feld auf dem Spielbrett; Beinhaltet die ID(Felder sind durchnummeriert),dort liegenden Rohstoff, das dazugehörige Land und den Typ(siehe TypeIDs.txt)
+-Einführung Reader.class: Liest eine Textdatei ein und kann sie zeilenweise ausgeben; Ignoriert Zeilen mit vorangstelltem ";", um die Möglichkeit von Kommentaren einzubauen (Hinweis von Timo)
+-Erstellen von Fields.txt: Beinhaltet die Spielfelder und ihre zugehörigen ID's, Länder, Namen etc.
+-Fields.class: Hinzufügen der Möglichkeit, die Felder aus der Datei Fields.txt zu laden
+-Fields.class: Hinzufügen der Möglichkeit, den Feldern zufällig einen Rohstoff zuzuordnen
+-Fields.class: Hinzufügen der Möglichkeit, das nächste Feld von einem ausgehenden mit Anzahl der Schritte zurückzugeben; Berücksichtigung vom "Ende" des Spielfelds (Hinweis von Timo)
+-Gamer.class: Hinzufügen der Möglichkeit, das aktuelle Feld, auf dem der Spieler steht, zu speichern
+-Game.class: Hinzufügen der Möglichkeit, dass der akutelle Spieler würfeln kann und anschließend auf das entsprechende Feld vorrückt; Man würfelt dabei mit beiden Würfeln (Hinweis von Timo)
+-Game.class: Wenn man nun auf dem Feld "Bonus" landet, erhält man Geld nach der Formel "Augenzahl insgesamt * 500.000€ (Hinweis von Nico)
+-Connection.class: Hinzufügen der Möglichkeit, den Zug an den nächsten Spieler weiterzugeben
+-Connection.class: Hinzufügen der Möglichkeit, aufzugeben; Ermittlung des Gewinners, wenn kein weiterer Mitspieler mehr vorhanden ist und Beenden des Spiels (Hinweis von Timo)
+-Game.class: Hinzufügen der Möglichkeit, dass ein Spieler aufgibt; Das Spiel stürzt ab, wenn ein Spieler aufgibt, bevor das Spiel gestartet ist(jemand dran ist) (Hinweis von Timo)
+-Einführung PropertyList.class: Beinhaltet eine Liste von Anteilsscheinen
+-Einführung Property.class: Repräsentiert einen Anteilsschein; Beinhaltet ID, Name des Rohstoffs, Prozent, Preis, zugehöriges Land (Hinweis von Nico)
+-Erstellen von Properties.txt: Beinhaltet die Anteilsscheine und die dazugehörigen Daten
+-PropertyList.class: Hinzufügen der Möglichkeit, alle Rohstoffe aus der Datei Properties.txt zu laden
+-PropertyList.class: Hinzufügen der Möglichkeit, eine PropertyList vollständig in einer andere zu übertragen (Hinweis von Nico)
+-PropertyList.class: Speichert nun den Wert aller enthaltenen Anteilsscheine
+-Gamer.class: Hinzufügen einer PropertyList, um die eigenen Anteilsscheine zu speichern
+-Game.class: Hinzufügen einer PropertyList, die die Bank repräsentiert, und einer, die den Einkaufswagen des Spielers repräsentiert (Hinweis von Nico)
+-Game.class: Hinzufügen der Funktionalitäten, um Anteilsscheine einzukaufen: (Hinweis von Timo)
+	-Senden der verfügbaren Anteilsscheine
+	-Hinzufügen zum/Entfernen vom Einkaufswagen (Hinweis von Timo)
+	-Einkauf abschließen/abbrechen ;Berücksichtigung des Guthabens vom Spieler/ Zurückladen der Anteilsscheine vom Einkaufswagen in die Bank bei Abbruch (Hinweis von Nico)
+-Erstellen von Ressources.txt: Beinhaltet alle Rohstoffe, deren Namen und die Preise für die jeweiligen Prozent-Grenzen(30%, 50%, 70%, 90%)
+-Umstellen der Rohstoffverwaltung auf ID's
+-PropertyList.class: Speichert nun den gesamten Prozentwert aller Rohstoffe und die Kosten bei Betreten des jeweiligen Rohstoffs (Hinweis von Nico)
+-Game.class: Beim Mitspieler werden nur die Aktions-Knöpfe aktiviert, die der Spieler auch nutzen kann; Zusätzlich wird bei jedem Versuch, eine Aktion auszuführen, geprüft, ob es mögich ist (Hinweis von Nico)
+-Game.class: Hinzufügen der Möglichkeit, dem jeweiligen Spieler den Prozentwert und die Preise(bei Betreten) seiner Anteile zu übermitteln (Hinweis von Timo)
+-Game.class: Nun müssen Mitspieler Geld an die Mitspieler zahlen, wenn diese entsprechende Anteile am Rohstoff besitzen, auf dem man landet (Hinweis von Timo)
+-Game.class: Hinzufügen der Möglichkeit, Anteilsscheine in einer Auktion zu versteigern; Berücksichtigung, dass mindestens 2 weitere Spieler mitspielen müssen;(Hinweis von Timo)
+-Game.class: Hinzufügen der Möglichkeit, bei Auktionen zu Steigern/Auszusteigen; Spieler, die aufgrund von Geldmangel nicht mehr mitbieten können, fliegen aus der Auktion raus (Hinweis von Timo)
+-Game.class: Wenn ein Spieler auf dem Feld "Auktion" landet, muss er entsprechend der Augenzahl des roten Würfels Anteilsscheine versteigern (Hinweis von Timo)
+-Game.class: Beim Feld "Auktion" wird nun berücksichtigt, ob mindestens 2 andere Mitspieler vorhanden sind (Hinweis von Timo)
+-Game.class: Beim Feld "Auktion" wird nun berücksichtigt, wie viele Anteilsscheine ein Spieler besitzt; Man muss maximal so viele Anteilsscheine verkaufen, wie man besitzt (Hinweis von Nico)
+-Game.class: Geldbeträge werden nun zwecks besserer Lesbarkeit mit Trennpunkten dargestellt (Hinweis von Timo)
+-Gamer.class: Hinzufügen der Möglichkeit, Joker abzuspeichern 
+-Game.class: Wenn ein Spieler auf dem Feld "Joker" landet, erhält er einen Joker (Hinweis von Timo)
+-Game.class: Hinzufügen der Möglichkeit, einen Joker zu setzen; Wenn man Anteilsscheine verkaufen muss, wird dies damit aufgehoben (Hinweis von Timo)
+-Einführung ConfReader.class: Kann eine Datei einlesen und den Wert eines bestimmten Schlüssels zurückgeben(Boolean, Integer) (Hinweis von Timo)
+-Erstellen von Settings.conf: Beinhaltet verschiedene Einstellungen, wie Port, Minimale Spieleranzahl, Startgeld, Anzeige der Zeit in der Konsole (Hinweis von Nico)
+-Server.class: Lädt nun beim Starten die Einstellungen
+-UserInput.class: Hinzufügen des Befehls "help": Listet alle verfügbaren Befehle mit Erklärungen auf (Hinweis von Timo)
+-UserInput.class: Hinzufügen des Befehls "loadsettings": Lädt die Einstellungen während der Laufzeit neu 
+-Connection.class: Umstellen von verschiedenen Arten von Nachrichten auf das Mitsenden der Farbe bei jeder Nachricht (Hinweis von Nico)
+-Server.class: Hinzufügen von verschiedenen Farben für Nachrichten, die aus "settings.conf" geladen werden
+-ConnectionList.class: Hinzufügen von "broadcastEx(Connection Con, String Message)": Sendet eine Nachricht an alle Verbindungen außer der übergebenen (Hinweis von Nico)
+-Game.class: Einführen von personalisierten Nachrichten für Spieler, wenn sie von einer Spielhandlung betroffen sind; Zuvor nur allgemeine Nachrichten an alle
+-Server.class: Jede Verbindung erhält nun eine einzigartige ID
+-Server.class: Zuschauer bekommen nun alle relevanten Daten übermittelt, wenn sie verbinden, während das Spiel bereits läuft
+-Connection.class: Jede Verbindung besitzt nun eine Farbe, die im Client zu sehen ist
+-Server.class: Einführung des Bereitschaftssystems: Jeder Mitspieler kann nun "bereit" oder "nicht bereit" sein
+-Einführung GameStarter.class: Sie startet nun das Spiel automatisch nach einem Countdown, wenn alle Spieler bereit sind; Countdown-Zeit lässt sich in Settings.conf einstellen (Hinweis von Nico)
+-Erstellen von "PlayerColors.txt": Enthält eine Liste von Farben, die für die Mitspieler vorhergesehen sind
+-Game.class: Jeder Mitspieler erhält nun eine individuelle Farbe
+-Server.class: Hinzufügen von "synchronized void accessReadMessage(Connection Con, String Message)"; Jede Connection.class sendet nun eine Anfrage zur Bearbeitung eingehender Befehle an die Hauptklasse;
+																									-> Verhindert, dass mehrere Clients gleichzeitig auf das Spiel zugreifen können
+-Game.class: Einführung von Spielfiguren, die im Client angezeigt werden
+-ConnectionList.class: Hinzufügen von "broadcastexPlayers(String Message)": sendet eine Nachricht an alle Clients, die keine Mispieler sind 
+-Game.class: Alle Zuschauer bekommen nun von jedem Mitspieler die Anzahl der im Besitz befindlichen Anteilsscheine und des Kontostands übermittelt (Hinweis von Nico)
+-Game.class: Alle Zuschauer bekommen nun die Augenzahl der Würfel des aktuellen Spielers übermittelt (Hinweis von Timo) 
+-Game.class: Der Spieler, der aktuell dran ist, wird nun in allen Clients markiert (Hinweis von Timo)
+-Game.class: Während einer Auktion wird bei Mitbietern nun im Anzeigefenster der Rohstoff markiert, der zur Auktion steht, insofern diese bereits Anteile daran besitzen (Hinweis von Nico)
+-Game.class: Wenn man nun auf dem Feld "Telex" landet, wird zufällig entweder "Auktion" oder "Bonus" ausgelöst(Wahrscheinlichkeit 50:50) (Hinweis von Timo)
+-Game.class: Der Fehler, dass das Spiel abstürzt, wenn jemand vor dem Auswürfeln aufgibt, wurde behoben (Hinweis von Nico)
+-Game.class: Das Auswürfeln des Anfängers findet nun mit beiden Würfeln statt (Hinweis von Timo)
+-Game.class: Wenn ein Mitspieler nun auf einem Feld landet, in dem keine Anteilsscheine mehr vorhanden sind, erhält er darüber eine Nachricht (Hinweis von Nico)
+-Game.class: Wenn nun eine Auktion gestartet wird, wird direkt überprüft, wer genug Geld zum Mitbieten hat (Hinweis von Timo)
+-Server.class: Beim Beenden wartet der Server nun, bis alle Clients ausgeloggt sind (Hinweis von Nico)
+-PropertyList.class: Die Anteilsscheine werden nun alphabetisch sortiert (Hinweis von Timo)
+-Server.class: Der Server gibt nun beim Starten in der Konsole die lokale IP-Adresse aus (Hinweis von Nico)
+
+-Server.class: Das Bonusgeld pro Augenzahl lässt sich nun in "Settings.conf" einstellen
+-Server.class: Die Wahrscheinlichkeit auf eine Auktion beim Feld "Telex" lässt sich nun in "Settings.conf" einstellen (Hinweis von Timo)
+-Game.class: Bezieht die entsprechenden Werte nun aus den Einstellungen 
+-Game.class: Wenn die Bank leer ist, wird nun eine entsprechende Meldung ausgegeben (Hinweis von Nico)
+-Game.class: Wenn ein Spieler weder Geld noch Anteilsscheine besitzt, wird er aus dem Spiel geworfen (Hinweis von Nico)
+-Game.class: Der Server sendet nun an Spieler den Befehl, einen Würfelsound abzuspielen, wenn sie würfeln (Hinweis von Timo)
+-Game.class: Wenn ein Spieler auf dem Feld "Auktion" landet, wird nun entsprechend eine Meldung ausgegeben, wenn zu wenig Mitbieter vorhanden sind/Der Spieler weniger oder keine Anteilsscheine besitzt (Hinweis von Nico)
+-Game.class: Wenn ein Spieler eine Auktion machen muss(Auktion, Telex), die aber nicht möglich ist, muss er einen Geldbetrag zahlen.(Augenzahl roter Würfel * Auktionspreis; Auktionspreis lässt sich in "Settings.conf" einstellen) (Hinweis von Timo)
+-Game.class: Sendet jedem Client bei einer Auktion nun jeweils die Anteile, die ein Spieler bereits am Rohstoff besitzt
+-Erstellen von "SoundIDs.txt": Beinhaltet die IDs für die verschiedenen Sounds 
+-Connection.class: Für private Nachrichten kann der Nutzer nun auch die ID des Empfängers angeben; Es wird nun auch überprüft, ob die Nachricht einen Inhalt besitzt (Hinweis von Timo)
+-Game.class: Bei den Spielern werden jetzt weitere verschiedene Sounds abgespielt, z.B. hört man ein Signal, wenn man dran ist (Hinweis von Nico)
+-Server.class: Der Name der Spieler darf nun höchstens 20 Zeichen lang sein (Hinweis von Timo)
+-Server.class: Wenn ein Spieler verbindet, während das Spiel bereits läuft und eine Auktion stattfindet, erhält er jetzt auch die entsprechenden Daten
+-Game.class: Neues Steigersystem bei Auktionen: Bis zu einer Grenze wird um einen kleineren Betrag gesteigert, ab dieser Grenze um einen höheren; Der niedrige Betrag, die Grenze und der höhere Betrag lassen sich in "Settings.conf" einstellen
+-GameStarter.class: Während des Spiels überprüft er nun, wie lange der aktuelle Spieler inaktiv ist und gibt zunächst nach einer Zeit eine Meldung aus, nach einer weiteren Zeit wird die Weitergabe der Runde erzwungen; Beide Zeiten lassen sich in "Settings.conf" einstellen
+-Game.class: Verbesserung der Srukturen zum Aufgeben/plötzlichen Entfernen eines Spielers(Verbindungsabbruch)
+-Server.class: Die Dateien werden nun über URL's eingelesen
+-Server.class: Wenn die Datei "Settings.conf" fehlt, wird nun eine mit Standard-Einstellungen erstellt
+-Server.class: Der Server ist nun auch als Jar-Archiv verfügbar
+-Game.class: Wenn das Spiel vorbei ist, wird nun an alle Clients eine Fokus-Anfrage gesendet
+-UserInput.class: Hinzufügen des Befehls "message <ID/Username> <Message>": Sendet eine Nachricht an einen bestimmten Client
+-UserInput.class: Hinzufügen des Befehls "kick <ID/Username>": Trennt die Verbindung zum angegebenen Client
+-Game.class: Eine Auktion wird jetzt erst ausgelöst, wenn der Spieler die erste Runde abgeschlossen hat
+-Server.class: Wenn ein Spieler sich einloggt/ausloggt, erhalten alle anderen Clients nun darüber eine Nachricht
+-GameStarter.class: Wenn ein Spieler zu lange inaktiv war, wird er nun aus dem Spiel entfernt, wenn sein Kontostand im negativen Bereich ist
+-GameStarter.class: Während einer Auktion wird nun die Aktivität der Mitbieter überprüft; Wenn einer zu lange nichts tut, wird er aus der Auktion entfernt
+-Game.class: Wenn nun das Beenden der Runde eines Spielers erzwungen wird und er noch nicht gewürfelt hat, wird automatisch gewürfelt; Wenn er auf Auktion landet, muss er entsprechend Geld bezahlen
+-Game.class: Bei einer Auktion wird nun automatisch ein Joker gesetzt, falls nur 2 Spieler vorhanden sind und der Spieler einen besitzt.
+-Game.class: Wenn ein Spieler bei Inaktivität übersprungen wird und dabei auf Auktion landet, wird geprüft, ob er weiter spielfähig ist.
+-Connection.class: Würfeln setzt nun den Inaktivitätscounter zurück.
+-Game.class: Die Markierung des aktuellen Spielers wird nun entfernt, wenn das Spiel beendet wird.
