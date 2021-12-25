@@ -1,0 +1,9 @@
+;Types
+1  Start
+2  Country
+3  Select
+4  Select World
+5  Auction
+6  Bonus
+7  Telex
+8  Joker

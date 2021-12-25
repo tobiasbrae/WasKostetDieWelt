@@ -1,0 +1,9 @@
+;Sound-IDs
+0 Button-Click
+1 Roll
+2 Message
+3 Figure-Step
+4 Countdown
+5 Countdown finished
+6 Game starts
+7 It's your turn

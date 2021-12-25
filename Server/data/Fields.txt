@@ -1,0 +1,67 @@
+;FieldID CountryID  Type   Name
+    1       0        1     Start
+    2       1        2     Skandinavien
+    3       2        2     Deutschland
+    4      41        3     Auswahl Europa
+    5       3        2     Großbritanien
+    6       4        2     Frankreich 
+    7       5        2     Südeuropa
+    8      41        3     Auswahl Europa
+    9       6        2     Osteuropa
+   10       7        2     Balkanländer
+   11       0        5     Auktion
+   12       0        6     Bonus
+   13       0        7     Telex
+   14       8        2     UDSSR
+   15       8        2     UDSSR
+   16       8        2     UDSSR
+   17       0        7     Telex
+   18       0        6     Bonus
+   19       0        8     Joker
+   20       9        2     Antillen
+   21      10        2     Mexiko
+   22      42        3     Auswahl Amerika
+   23      11        2     Brasilien
+   24      12        2     Venezuela
+   25      13        2     Andenstaaten
+   26      42        3     Auswahl Amerika
+   27      14        2     Kanada
+   28      15        2     Argentinien
+   29       0        5     Auktion
+   30       0        6     Bonus
+   31       0        7     Telex
+   32      16        2     USA
+   33      16        2     USA
+   34      16        2     USA
+;Field CountryID  Type   Name  
+   35       0        7     Telex 
+   36       0        6     Bonus
+   37       0        5     Auktion
+   38      17        2     Nordwestafrika
+   39      18        2     Nordostafrika
+   40      19        2     Westafrika
+   41      43        3     Auswahl Afrika
+   42      20        2     Zentralafrika
+   43      21        2     Ostafrika
+   44      22        2     Südafrika
+   45       0        8     Joker
+   46       0        6     Bonus
+   47       0        4     Auswahl Welt
+   48      23        2     Ozeanien
+   49       0        7     Telex
+   50       0        6     Bonus
+   51       0        5     Auktion
+   52      24        2     Mittlerer Orient
+   53      25        2     Indischer Subkontinent
+   54      26        2     Indochina
+   55      44        3     Auswahl Asien
+   56      27        2     Japan
+   57      28        2     China
+   58      29        2     Indonesien
+   59       0        8     Joker
+   60       0        6     Bonus
+   61       0        4     Auswahl Welt
+   62      23        2     Ozeanien
+   63       0        7     Telex
+   64       0        6     Bonus
+   65       0        5     Auktion
